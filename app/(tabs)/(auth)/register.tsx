@@ -18,7 +18,7 @@ export default function Register() {
     email: email
   }
 
-  console.log("payload", payload)
+  //console.log("payload", payload)
 
 const handleRegister = () => {
   axios
