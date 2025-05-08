@@ -6,6 +6,8 @@ export default function AuthLayout() {
     <Stack>
       <Stack.Screen
         name="register" options={{headerTitle: "Register" ,headerTitleStyle: globalStyles.title}}/>
+      <Stack.Screen
+        name="login" options={{headerTitle: "Login" ,headerTitleStyle: globalStyles.title}}/>
     </Stack>
   );
 }
