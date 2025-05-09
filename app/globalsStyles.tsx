@@ -2,14 +2,16 @@ import { StyleSheet } from 'react-native';
 
 export const globalStyles = StyleSheet.create({
   container: {
-    flex: 1,
     padding: 20,
-    backgroundColor: '#fff',
+    backgroundColor: '#fffceb',
+    borderRadius: 10,
+    marginTop: 10
   },
   title: {
-    fontSize: 24,
+    fontSize: 22,
     fontWeight: 'bold',
-    marginBottom: 16,
+    color: "#A76545",
+    alignSelf: 'center'
   },
   input: {
     height: 40,
