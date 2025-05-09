@@ -32,3 +32,5 @@ export const globalStyles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
+
+export default globalStyles
