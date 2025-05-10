@@ -54,7 +54,7 @@ const handleRegister = () => {
       value={password}
       />
 
-      <Button mode="outlined" textColor='black'  style={{width: 270, height: 45, alignItems: 'center', borderTopLeftRadius:0, borderTopRightRadius:0 }}>      
+      <Button mode="outlined" textColor='black' onPress={handleRegister} style={{width: 270, height: 45, alignItems: 'center', borderTopLeftRadius:0, borderTopRightRadius:0 }}>      
           <Link href="/register">Ustvari račun</Link>
       </Button>
       </View>
