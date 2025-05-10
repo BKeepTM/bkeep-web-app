@@ -2,7 +2,7 @@ import { globalStyles } from '@/app/globalsStyles';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Text, View , Pressable} from 'react-native';
-import { TextInput } from 'react-native-gesture-handler';
+import { TextInput } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Login() {
