@@ -1,10 +1,10 @@
-import { useContext, createContext, useState } from "react";
+import { useContext, createContext, useState, useEffect } from "react";
 import { useNavigation, Redirect } from "expo-router";
 import { Platform } from "react-native";
 import axios from "axios";
 import * as SecureStore from "expo-secure-store";
 
-const apiUrl = process.env.EXPO_PUBLIC_API_URL;
+const apiUrl = Platform.OS === 'web' ? process.env.EXPO_PUBLIC_API_URL : process.env.EXPO_PUBLIC_MOBILE_URL;
 export interface User {
   token: string;
   username: string;
@@ -36,7 +36,16 @@ export const AuthContext = createContext<User>({} as User);
 
 const AuthProvider = ({ children }: any) => {
   const [username, setUsername] = useState("");
-  const [token, setToken] = useState(localStorage.getItem("site") ||  "");
+  const [token, setToken] = useState("");
+
+  useEffect(()=>{
+  if(Platform.OS === 'web'){
+  setToken(localStorage.getItem("site") ||  "");
+  }else{
+  setToken(SecureStore.getItem("site") ||  "");
+  }
+  },[])
+
   const navigate = useNavigation();
 
   const login = async (data : any) => {
