@@ -1,14 +1,15 @@
 import { globalStyles } from '@/app/globalsStyles';
 import axios from 'axios';
-import { Link } from 'expo-router';
+import { Link, router } from 'expo-router';
 import { useState } from 'react';
-import { Text, View , StyleSheet, Pressable,Image} from 'react-native';
+import { Text, View , StyleSheet, Pressable,Image, Platform} from 'react-native';
 import { Card, TextInput, Button } from 'react-native-paper';
 import globalImages from '../globalImages';
 
 
 export default function Register() {
-  const apiUrl = process.env.EXPO_PUBLIC_API_URL;
+ 
+  const apiUrl = Platform.OS === 'web' ? process.env.EXPO_PUBLIC_API_URL : process.env.EXPO_PUBLIC_MOBILE_URL;
 
   const [username,setUsername] = useState("")
   const [password,setPassword] = useState("")
@@ -25,6 +26,11 @@ export default function Register() {
 const handleRegister = () => {
   axios
   .post(`${apiUrl}/users/register`,payload)
+  .then(()=>{router.replace('/login')})
+  .catch(error => {
+    console.log("api url:", apiUrl)
+    console.error("Napaka pri registraciji:", error.message);
+  });
 }  
 
 
@@ -41,7 +47,6 @@ const handleRegister = () => {
       />
 
       <TextInput 
-      
       label={"Username"}
       onChangeText={e => setUsername(e)}
       value={username}
@@ -55,7 +60,7 @@ const handleRegister = () => {
       />
 
       <Button mode="outlined" textColor='black' onPress={handleRegister} style={{width: 270, height: 45, alignItems: 'center', borderTopLeftRadius:0, borderTopRightRadius:0 }}>      
-          <Link href="/register">Ustvari račun</Link>
+          Ustvari račun
       </Button>
       </View>
 
