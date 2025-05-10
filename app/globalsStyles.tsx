@@ -8,10 +8,11 @@ export const globalStyles = StyleSheet.create({
     marginTop: 10
   },
   title: {
-    fontSize: 22,
+    fontSize: 18,
     fontWeight: 'bold',
-    color: "#A76545",
-    alignSelf: 'center'
+    color: "black",
+    alignSelf: 'center',
+    textAlign: 'center'
   },
   input: {
     height: 40,
@@ -22,15 +23,27 @@ export const globalStyles = StyleSheet.create({
     borderColor: '#ccc',
   },
   button: {
-    backgroundColor: '#841584',
+    backgroundColor: '#fffceb',
     padding: 12,
     borderRadius: 5,
     alignItems: 'center',
+    width:300,
+  
+    borderEndStartRadius: 20,
+    borderStartEndRadius: 20,
+    
   },
   buttonText: {
-    color: '#fff',
+    color: 'black',
     fontWeight: 'bold',
+    alignSelf: 'center',
+    textAlign: 'center',
+    fontSize: 22,
   },
+  mainView:{
+    flexDirection: 'column', justifyContent: 'space-between',
+        alignItems: 'center', flex:1, backgroundColor: "#F6F0F0"
+      }
 });
 
 export default globalStyles
