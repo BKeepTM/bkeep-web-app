@@ -1,0 +1,36 @@
+.hello-container {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(-70deg,rgb(249, 250, 247) 33%, #FFEAA7 33%, #FFEAA7 66%,rgb(107, 108, 110) 66%);
+}
+
+.hello-top-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-left: 2rem;
+  width: 30vw;
+  color: white;
+  gap: 0%;
+}
+
+.hello-center {
+  position: absolute;
+  top: 50%;
+  left: 48%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #B67D4A;
+}
+
+
+.hello-bottom-right {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 30vw;
+  padding-bottom: 1rem;
+  color: black;
+}

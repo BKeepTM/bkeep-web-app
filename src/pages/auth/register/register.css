@@ -1,0 +1,28 @@
+.register-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding-left: 15rem;
+}
+
+.register-forum{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    padding-right: 15rem;
+    width: 30vw
+}
+
+.register-art{
+    display: flex;
+    height: 100vh;
+    background: linear-gradient(-8deg,rgb(249, 250, 247) , #FFEAA7 ,rgb(107, 108, 110));
+    width: 50vw;
+    justify-content: end;
+    align-items: end;
+}
+
+
