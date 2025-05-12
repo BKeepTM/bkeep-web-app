@@ -3,11 +3,11 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 import TextField from '@mui/material/TextField';
-
+import { useAuth } from '../../../hooks/authProvider';
 
 export default function Login() {
   const navigate = useNavigate();
-
+  const auth = useAuth();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -18,13 +18,9 @@ export default function Login() {
     password,
   };
 
-  const handleLogin = async () => {
-    try {
-      await axios.post(`${apiUrl}/users/login`, payload);
-      navigate('/'); 
-    } catch (error) {
-      console.error('Napaka pri prijavi:', error.message);
-    }
+  const handleLogin = (e) => {
+    e.preventDefault(); // nevem zakaj mora bit to samo pusti na miru :)
+    auth.login(payload);
   };
 
   return (
@@ -39,7 +35,7 @@ export default function Login() {
       <div className='login-forum'>
       <h2 style={{ marginBottom: "0"}}>Prijavi se,</h2>
       <h2 style={{ marginTop: "0"}}>panji se polnijo🍯</h2>
-      <form onSubmit={handleLogin()} className="form-container">
+      <form onSubmit={handleLogin} className="form-container">
 
           <TextField
             required
@@ -56,7 +52,7 @@ export default function Login() {
             type="password"
           />
 
-        <button type="submit" className="login-button">
+        <button type="submit" className="login-button" onClick={handleLogin}>
           Prijava
         </button>
       </form>
