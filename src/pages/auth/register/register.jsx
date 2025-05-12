@@ -11,6 +11,8 @@ export default function Register() {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
 
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   const payload = {
     username,
     password,
@@ -35,7 +37,7 @@ export default function Register() {
     <div className='register-forum'>
       <h2 style={{ marginBottom: "0"}}>Še nimaš računa?</h2>
       <h2 style={{ marginTop: "0"}}>Registriraj se🐝</h2>
-      <form onSubmit={(e) => {handleRegister();}} className='form-container'>
+      <form onSubmit={handleRegister} className='form-container'>
 
         <TextField
           required
