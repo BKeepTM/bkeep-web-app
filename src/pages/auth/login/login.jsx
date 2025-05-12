@@ -11,6 +11,8 @@ export default function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   const payload = {
     username,
     password,
@@ -18,8 +20,8 @@ export default function Login() {
 
   const handleLogin = async () => {
     try {
-      await axios.post(`${process.env.REACT_APP_API_URL}/users/login`, payload);
-      navigate('/'); // ali '/dashboard' ipd.
+      await axios.post(`${apiUrl}/users/login`, payload);
+      navigate('/'); 
     } catch (error) {
       console.error('Napaka pri prijavi:', error.message);
     }

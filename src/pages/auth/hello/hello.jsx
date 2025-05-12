@@ -19,7 +19,7 @@ export default function Hello() {
       </div>
 
       <div className="hello-bottom-right">
-        <h2>Nadzoruj svoje panje kjerkoli in kadarkoli, brez omejitev!</h2>
+        <h2 style={{color: "rgb(75, 76, 77)"}}>Nadzoruj svoje panje kjerkoli in kadarkoli, brez omejitev!</h2>
       </div>
     </div>
   );
