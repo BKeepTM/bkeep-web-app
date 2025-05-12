@@ -32,5 +32,12 @@
   right: 0;
   width: 30vw;
   padding-bottom: 1rem;
-  color: black;
 }
+
+.gradient-text {
+  font-size: 1.2em;
+  background: radial-gradient( #DFBD69, #E0AA3E);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+

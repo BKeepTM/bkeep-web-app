@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import './Hello.css';
 import cebelar from '../../../assets/images/cebelar2.png';
+import { linearGradient } from 'framer-motion/client';
 
 export default function Hello() {
   return (
@@ -18,8 +19,8 @@ export default function Hello() {
         </div>
       </div>
 
-      <div className="hello-bottom-right">
-        <h2 style={{color: "rgb(75, 76, 77)"}}>Nadzoruj svoje panje kjerkoli in kadarkoli, brez omejitev!</h2>
+      <div className="hello-bottom-right"> 
+      <i className='gradient-text'>Opravlaj✔️nadziraj📋beleži✏️ <br/> Zvesti panjem kjerkoli in kadarkoli.</i>     
       </div>
     </div>
   );
