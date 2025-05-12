@@ -1,0 +1,25 @@
+.home-container{
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+background: linear-gradient(180deg, #f5f5dc 0%, #f0e4d7 50%, #d2b48c 100%);
+}
+
+.status-container{
+    height: 100vh;
+    background-color: #212121;
+    width: 50vw;
+    color: white;
+
+    display: flex;
+    justify-content: center;
+}
+
+.card-container{
+    display: flex;
+    flex-direction: column;
+    padding: 5%;
+}

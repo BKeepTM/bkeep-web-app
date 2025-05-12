@@ -4,18 +4,26 @@ import PageWrapper from './hooks/PageWrapper';
 import Register from './pages/auth/register/register'; 
 import Login from './pages/auth/login/login';
 import Hello from './pages/auth/hello/hello';
+import AuthGuard from './hooks/authGuard';
+import AuthProvider from './hooks/authProvider';
+import Home from './pages/home/home';
 
 function TransitionRoutes() {
   const location = useLocation();
 
   return (
+    <AuthProvider>
       <AnimatePresence mode='wait'>
       <Routes location={location} key={location.pathname}>
+        <Route element={<AuthGuard/>}> 
+          <Route path="/home" element={<PageWrapper><Home/></PageWrapper>} /> 
+        </Route>
         <Route path="/" element={<PageWrapper><Hello/></PageWrapper>} /> 
         <Route path="/register" element={<PageWrapper><Register/></PageWrapper>} /> 
         <Route path="/login" element={<PageWrapper><Login/></PageWrapper>} /> 
       </Routes>
       </AnimatePresence>
+    </AuthProvider>
   );
 }
 
