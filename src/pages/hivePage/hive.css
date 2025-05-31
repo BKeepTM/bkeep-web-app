@@ -1,0 +1,11 @@
+.chart-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    background:  #ffffff 50%) ;
+    color: white;
+    height: 89.6vh;
+}
+
