@@ -89,6 +89,7 @@ function Home() {
 
       <main ref={moreRef} className="card-container">
         <ActionAreaCard img={cardHive} title="Panji" description="Upravljaj in spremljaj panje." onClick={()=>navigate("/home/hives")}/>
+          <ActionAreaCard img={cardGraph} title="Statistika" description="Statistični podatki glede panjev." onClick={()=>navigate("/home/stats")} />
         <ActionAreaCard img={cardMap} title="Zemljevid" description="Lokacije panjev in naravnih virov." onClick={()=>navigate("/home/location")} />
       </main>
     </div>

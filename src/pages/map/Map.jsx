@@ -87,10 +87,6 @@ export default function Map() {
           color: "black",
           borderColor: "black",
           mb: 2,
-          '&:hover': {
-            borderColor: "#90caf9",
-            backgroundColor: "#333",
-          },
         }}
       >
         Nazaj domov

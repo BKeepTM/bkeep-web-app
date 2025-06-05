@@ -1,0 +1,22 @@
+.stats-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.chart-block {
+  display: flex;
+  flex-direction: row;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  gap: 2rem;
+  height: 70vh;
+
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+
