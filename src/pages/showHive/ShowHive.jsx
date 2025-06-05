@@ -10,6 +10,7 @@ import TextSnippetIcon from '@mui/icons-material/TextSnippet';
 import DeleteIcon from '@mui/icons-material/Delete';
 import HiveWeightChartSingle from "../../components/HiveWeightChartSingle";
 import OnlinePredictionIcon from '@mui/icons-material/OnlinePrediction';
+import NotifyAnalize from "../../components/NotifyAnalize";
 
 function ShowHive() {
   const navigate = useNavigate();
@@ -213,6 +214,9 @@ const handleToggle = async () => {
           }).then(res => setNotes(Array.isArray(res.data) ? res.data : []));
         }}
       />
+
+      <NotifyAnalize recent={weight[weight.length - 1]} dated={weight[weight.length - 2]}/>
+
     </Container>
   );
 }
