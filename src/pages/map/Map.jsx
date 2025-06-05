@@ -7,6 +7,14 @@ import { Card, CardContent, Typography, Button } from "@mui/material";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useNavigate } from "react-router-dom";
 
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Avatar from '@mui/material/Avatar';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import InventoryIcon from '@mui/icons-material/Inventory';
+
 export default function Map() {
   const [location, setLocation] = useState([]);
   const mapContainer = useRef(null);
@@ -59,47 +67,73 @@ export default function Map() {
     });
   }, [location]);
 
+  const groupedByLocation = location.reduce((acc, loc) => {
+  if (!acc[loc.location]) {
+    acc[loc.location] = [];
+  }
+  acc[loc.location].push(loc.name); 
+  return acc;
+}, {});
+
+
   return (
+    <>
+    <Button
+        variant="outlined"
+        startIcon={<ArrowBackIcon />}
+        onClick={() => navigate('/home')}
+        sx={{
+          margin: '2%',
+          color: "black",
+          borderColor: "black",
+          mb: 2,
+          '&:hover': {
+            borderColor: "#90caf9",
+            backgroundColor: "#333",
+          },
+        }}
+      >
+        Nazaj domov
+      </Button>
     <div className="location-container">
 
       <div className="hive-info">
         <div className="hive-header">
-          <Button
-            variant="outlined"
-            startIcon={<ArrowBackIcon />}
-            onClick={() => navigate('/home')}
-            sx={{
-              color: "white",
-              borderColor: "white",
-              mb: 2,
-              '&:hover': {
-                borderColor: "#90caf9",
-                backgroundColor: "#333",
-              },
-            }}
-          >
-            Nazaj domov
-          </Button>
-
-          <Typography variant="h5" sx={{ fontWeight: 'bold', color: "#ffffff" }}>
-            Seznam lokacij panjev
+          <Typography variant="h5" sx={{ fontWeight: 'bold', color: "black" }}>
+            Lokacije panjev:
           </Typography>
         </div>
 
-        <div className="hive-list">
-          {location.map((loc) => (
-            <Card key={loc.id} sx={{ mb: 2, backgroundColor: "#6e6e6e" }}>
-              <CardContent sx={{ color: 'white' }}>
-                <Typography variant="subtitle1"><strong>Panj ID:</strong> {loc.id}</Typography>
-                <Typography variant="body2">Dolžina: {loc.longitude}</Typography>
-                <Typography variant="body2">Širina: {loc.latitude}</Typography>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+       <List sx={{ width: '100%', maxWidth: 300, paddingLeft:"5%", bgcolor: 'background.paper', maxHeight: 320, overflowY: 'auto', borderRadius: '5px',scrollbarWidth: 'none' }}>
+        {Object.entries(groupedByLocation).map(([locationName, hives]) => (
+          <ListItem key={locationName} alignItems="flex-start">
+            <ListItemAvatar>
+              <Avatar>
+                <LocationOnIcon />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText
+              primary={<b>{locationName}</b>}
+              secondary={
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                  {hives.map((name, index) => (
+                    <div key={index} style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                      <InventoryIcon sx={{ fontSize: 18 }} />
+                      <i>{name}</i>
+                    </div>
+                  ))}
+                </div>
+              }
+            />
+          </ListItem>
+        ))}
+      </List>
+
+      
       </div>
 
       <div ref={mapContainer} className="map" />
     </div>
+    </>
   );
 }

@@ -2,28 +2,61 @@ import './home.css';
 import ActionAreaCard from '../../components/ActionAreaCard';
 import cardHive from '../../assets/images/cardHive.jpg';
 import cardGraph from '../../assets/images/cardGraph.jpg';
-import cardMap from '../../assets/images/cardMap1.jpg';
+import cardMap from '../../assets/images/newCardMap.jpg';
 import cardNotes from '../../assets/images/cardNotes.jpg';
 import Button from '@mui/material/Button';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import HiveWeightChart from '../../components/HiveWeightChart';
 import SwitchListSecondary from '../../components/HiveStatusList';
 import Alert from '@mui/material/Alert';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-
+import axios from 'axios';
+import { jwtDecode } from 'jwt-decode';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 function Home() {
   const moreRef = useRef(null);
   const navigate = useNavigate();
   const [hives, setHives] = useState([]);
-  
+
+  const apiUrl = import.meta.env.VITE_API_URL;
+
+  const token = localStorage.getItem('site');
+  const decoded = jwtDecode(token);
+  console.log("jwt",decoded);
+
 
   return (
     <div className="home-container">
       <header className="status-container">
         <div className="title-wrapper">
-          <h1>BKeep™</h1>    
+          <h1>BKeep™</h1>
+
+          <div className="user-info">
+          <AccountCircleIcon sx={{marginTop: "5%"}}/>
+          <p>{decoded.data.username}</p>
+          <Button
+            variant="outlined"
+            size="small"
+            sx={{
+              marginTop: "7%",
+              color: 'black',
+              borderColor: 'black',
+              ml: 1,
+              '&:hover': {
+                backgroundColor: '#444',
+                borderColor: '#f5f5f5',
+              }
+            }}
+            onClick={() => {
+              localStorage.removeItem('site');
+              navigate('/', { replace: true });
+            }}
+          >
+            Odjava
+          </Button>
+        </div>
         </div>
 
         <div style={{ width: '100%', maxWidth: '600px', alignSelf: 'center'}}>
@@ -38,7 +71,7 @@ function Home() {
           sx={{
             width: '100%',
             mt: 'auto',
-            color: 'white',
+            color: 'black',
             border: 'none',
             '&:focus': {
               outline: 'none',
@@ -57,9 +90,9 @@ function Home() {
       <main ref={moreRef} className="card-container">
         <ActionAreaCard img={cardHive} title="Panji" description="Upravljaj in spremljaj panje." onClick={()=>navigate("/home/hives")}/>
         <ActionAreaCard img={cardMap} title="Zemljevid" description="Lokacije panjev in naravnih virov." onClick={()=>navigate("/home/location")} />
-        <ActionAreaCard img={cardNotes} title="Zapiski" description="Dodaj beležke, opravila in opažanja." />
       </main>
     </div>
+
   );
 }
 

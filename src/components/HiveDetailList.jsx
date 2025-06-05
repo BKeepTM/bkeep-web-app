@@ -39,7 +39,6 @@ export default function DataTable() {
   };
 
   const columns = [
-    { field: 'id', headerName: 'ID', width: 70 },
     { field: 'name', headerName: 'Ime', width: 130 },
     { field: 'location', headerName: 'Lokacija', width: 130 },
     { field: 'type', headerName: 'Tip', width: 90 },
