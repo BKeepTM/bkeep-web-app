@@ -53,8 +53,8 @@ export default function SwitchListSecondary({ hives, setHives }) {
 
 
   return (
-    <List sx={{ width: '100%', maxWidth: 360, bgcolor: '#212121', alignSelf: 'center' , overflow: 'auto',
-        maxHeight: 300, color: 'white'}}>
+    <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'hsl(0, 0.00%, 19.20%)', alignSelf: 'center' , overflow: 'auto',
+        maxHeight: 300, color: 'white', borderRadius: '5px',scrollbarWidth: 'none'}}>
       {hives.map((hive) => {
         const isChecked = hive.status === 'online';
         const key = `hive-${hive.id}`;
@@ -77,10 +77,10 @@ export default function SwitchListSecondary({ hives, setHives }) {
                   }}
                   sx={{
                     '& .MuiSwitch-switchBase.Mui-checked': {
-                      color: '#E0AA3E',
+                      color: 'white',
                     },
                     '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
-                      backgroundColor: '#E0AA3E',
+                      backgroundColor: 'white',
                     },
                   }}
                 />
@@ -89,7 +89,7 @@ export default function SwitchListSecondary({ hives, setHives }) {
           >
             <ListItemText
               id={`switch-list-label-${key}`}
-              primary={`Panj ${hive.name || hive.id}`}
+              primary={`${hive.name || hive.id}`}
             />
           </ListItem>
         );

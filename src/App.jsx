@@ -9,6 +9,7 @@ import AuthProvider from './hooks/authProvider';
 import Home from './pages/home/home';
 import HivePage from './pages/hivePage/hive';
 import Map from './pages/map/Map';
+import ShowHive from './pages/showHive/ShowHive';
 
 function TransitionRoutes() {
   const location = useLocation();
@@ -21,6 +22,7 @@ function TransitionRoutes() {
           <Route path="/home" element={<PageWrapper><Home/></PageWrapper>} /> 
           <Route path="/home/hives" element={<PageWrapper><HivePage/></PageWrapper>} />
           <Route path="/home/location" element={<PageWrapper><Map/></PageWrapper>} /> 
+          <Route path="/panj/:id" element={<PageWrapper><ShowHive/></PageWrapper>} /> 
         </Route>
         <Route path="/" element={<PageWrapper><Hello/></PageWrapper>} /> 
         <Route path="/register" element={<PageWrapper><Register/></PageWrapper>} /> 

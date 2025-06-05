@@ -9,8 +9,8 @@ export default function ActionAreaCard(props) {
     <Card
       sx={{
         width: '100%',
-        bgcolor: 'grey.900',
-        color: 'white',
+        bgcolor: 'white',
+        color: 'black',
         borderRadius: 3,
         overflow: 'hidden',
         boxShadow: 4,
@@ -45,7 +45,7 @@ export default function ActionAreaCard(props) {
           <Typography gutterBottom variant="h6" component="div">
             {props.title}
           </Typography>
-          <Typography variant="body2" color="grey.300">
+          <Typography variant="body2" color="black">
             {props.description}
           </Typography>
         </CardContent>

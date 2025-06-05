@@ -2,17 +2,23 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background: linear-gradient(180deg, #f5f5dc 0%, #f0e4d7 50%, #d2b48c 100%);
+    background: linear-gradient(180deg, #bcbcbc 0%, #6f6c68 50%, #3e3830 100%);
 }
 
 .status-container {
     display: flex;
-  flex-direction: column;
-    background-color: #212121;
-    color: white;
+    flex-direction: column;
+    background-color: hsl(0, 0%, 96%);
+    color: rgb(0, 0, 0);
     text-align: center;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     height: 100vh;
+}
+
+.title-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .title-wrapper h1 {
@@ -34,5 +40,15 @@
     padding: 1.5rem;
     width: 100%;
     box-sizing: border-box;
+}
+
+
+.user-info {
+  position: absolute;
+  right: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
 }
 
