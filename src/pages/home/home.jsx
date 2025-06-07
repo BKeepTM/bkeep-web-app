@@ -9,7 +9,7 @@ import { useEffect, useRef } from 'react';
 import HiveWeightChart from '../../components/HiveWeightChart';
 import SwitchListSecondary from '../../components/HiveStatusList';
 import Alert from '@mui/material/Alert';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 import { useState } from 'react';
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
@@ -36,7 +36,9 @@ function Home() {
 
           <div className="user-info">
           <AccountCircleIcon sx={{marginTop: "5%"}}/>
-          <p>{decoded.data.username}</p>
+          <Link to={`/home/profile`}>
+              <u style={{color: "black"}}>{decoded.data.username}</u>
+            </Link>
           <Button
             variant="outlined"
             size="small"
@@ -66,7 +68,7 @@ function Home() {
         <SwitchListSecondary hives={hives} setHives={setHives}/>
        
 
-        <Button
+        <Button 
           color="secondary"
           sx={{
             width: '100%',
