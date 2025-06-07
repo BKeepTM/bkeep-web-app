@@ -93,16 +93,20 @@ export default function Map() {
       </Button>
     <div className="location-container">
 
-      <div className="hive-info">
-        <div className="hive-header">
-          <Typography variant="h5" sx={{ fontWeight: 'bold', color: "black" }}>
-            Lokacije panjev:
-          </Typography>
-        </div>
 
-       <List sx={{ width: '100%', maxWidth: 300, paddingLeft:"5%", bgcolor: 'background.paper', maxHeight: 320, overflowY: 'auto', borderRadius: '5px',scrollbarWidth: 'none' }}>
+       <List sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            gap: 2,
+            bgcolor: 'background.paper',
+            padding: 2,
+            borderRadius: 2,
+            flexWrap: 'wrap', 
+            marginTop: 1
+        }}>
         {Object.entries(groupedByLocation).map(([locationName, hives]) => (
-          <ListItem key={locationName} alignItems="flex-start">
+          <ListItem key={locationName} sx={{ flex: 1 }}>
             <ListItemAvatar>
               <Avatar>
                 <LocationOnIcon />
@@ -124,9 +128,6 @@ export default function Map() {
           </ListItem>
         ))}
       </List>
-
-      
-      </div>
 
       <div ref={mapContainer} className="map" />
     </div>

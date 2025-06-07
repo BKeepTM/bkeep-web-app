@@ -1,31 +1,15 @@
 .location-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column-reverse;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 2rem;
-}
-
-.hive-info {
-  flex: 1 1 350px;
-  max-width: 450px;
-  border-radius: 12px;
+  padding: 0rem 2rem 2rem 2rem;
 }
 
 .map {
   flex: 1 1 350px;
-  max-width: 600px;
-  height: 400px;
+  width: 100%;
+  min-height: 450px;
   border: 2px solid #ccc;
   border-radius: 12px;
-}
-
-.hive-header {
-  margin-bottom: 1rem;
-}
-
-.hive-list {
-  max-height: 300px;
-  overflow-y: auto;
-  margin-top: 1rem;
 }
