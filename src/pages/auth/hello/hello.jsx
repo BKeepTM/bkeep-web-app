@@ -14,8 +14,8 @@ export default function Hello() {
       <div className="hello-center">
         <img src={cebelar} width="250px" alt="Čebelar" />
         <div className="hello-buttons">
-          <button><Link to="/register" style={{color:"black"}}>Registracija</Link></button>
-          <button><Link to="/login" style={{color:"black"}}>Prijava</Link></button>
+          <Link to="/register" style={{color:"black"}}><button>Registracija</button></Link>
+          <Link to="/login" style={{color:"black"}}><button>Prijava</button></Link>
         </div>
       </div>
 
