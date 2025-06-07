@@ -14,6 +14,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import {useAuth} from '../../hooks/authProvider'
 
 function Home() {
   const moreRef = useRef(null);
@@ -21,7 +22,7 @@ function Home() {
   const [hives, setHives] = useState([]);
 
   const apiUrl = import.meta.env.VITE_API_URL;
-
+  const auth  = useAuth()
   const token = localStorage.getItem('site');
   const decoded = jwtDecode(token);
   console.log("jwt",decoded);
@@ -50,8 +51,7 @@ function Home() {
               }
             }}
             onClick={() => {
-              localStorage.removeItem('site');
-              navigate('/', { replace: true });
+             auth.logout()
             }}
           >
             Odjava
