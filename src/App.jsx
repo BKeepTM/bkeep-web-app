@@ -11,7 +11,7 @@ import HivePage from './pages/hivePage/hive';
 import Map from './pages/map/Map';
 import ShowHive from './pages/showHive/ShowHive';
 import Stats from './pages/stats/Stats';
-
+import Profile from './pages/auth/profile/profile';
 function TransitionRoutes() {
   const location = useLocation();
 
@@ -24,7 +24,9 @@ function TransitionRoutes() {
           <Route path="/home/hives" element={<PageWrapper><HivePage/></PageWrapper>} />
           <Route path="/home/location" element={<PageWrapper><Map/></PageWrapper>} /> 
           <Route path="/home/stats" element={<PageWrapper><Stats/></PageWrapper>} />
-          <Route path="/panj/:id" element={<PageWrapper><ShowHive/></PageWrapper>} /> 
+          <Route path="/home/profile" element={<PageWrapper><Profile/></PageWrapper>} />
+          <Route path="/panj/:id" element={<PageWrapper><ShowHive/></PageWrapper>} />
+           
         </Route>
         <Route path="/" element={<PageWrapper><Hello/></PageWrapper>} /> 
         <Route path="/register" element={<PageWrapper><Register/></PageWrapper>} /> 
