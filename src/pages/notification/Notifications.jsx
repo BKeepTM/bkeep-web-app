@@ -12,6 +12,10 @@ import { Link, Navigate, useNavigate } from 'react-router-dom';
 import {Button,Box} from "@mui/material";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import MarkunreadMailboxOutlinedIcon from '@mui/icons-material/MarkunreadMailboxOutlined';
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
+import Stack from '@mui/material/Stack';
+
 function Notifications () {
 
     const apiUrl = import.meta.env.VITE_API_URL;
@@ -40,44 +44,60 @@ function Notifications () {
         fetchData();
     }, []);
     return (
-        <div style={{display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', height:'110vh',
-        background: 'linear-gradient(60deg, #FFEAA7 50%, rgb(249, 250, 247) 50%)'
+        <div style={{display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', height:'auto',
+        background: 'linear-gradient(8deg,rgb(249, 250, 247), #FFEAA7'
         }}>
-        <Button
-          variant="outlined"
-          startIcon={<ArrowBackIcon />}
-          onClick={() => navigate('/home')}
-          sx={{ margin: '2%', color: "black", borderColor: "black", mb: 2, alignSelf:'start', background:'white'}}
-        >
-          Zapusti Obvestila
-        </Button>
 
-        <Box sx={{ maxWidth: 500, margin: "auto", p: 3, boxShadow: 3, borderRadius: 2, background: 'white', mt:2 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 4 , marginBottom:"2%"}}>
-            <MarkunreadMailboxOutlinedIcon sx={{ color:'#d6a400'}}/>
-            <i>Nabiralnik:</i>
+        
+        <Box sx={{width:"50vw", margin: "auto", p: 3, boxShadow: 3, borderRadius: 2, background: 'white', mt:2 , mb:2}}>
+        
+        <div style={{display:'flex', flexDirection:'row', gap:"17%"}}>
+            <Button
+            variant="outlined"
+            startIcon={<ArrowBackIcon />}
+            onClick={() => navigate('/home')}
+            sx={{ margin: '2%', color: "black", borderColor: "black", mb: 2, alignSelf:'start', background:'white'}}
+            >
+            Zapusti
+            </Button>
+
+            
+            <div style={{ display: 'flex', alignItems: 'center', gap: 4 , marginBottom:"2%"}}>
+                <MarkunreadMailboxOutlinedIcon sx={{ color:'#d6a400'}}/>
+                <i>Nabiralnik:</i>
+            </div>
         </div>
+        <Stack sx={{ width: '100%' }} spacing={2}>
         {
             notifications.map((noti) => {
+
+            let severityType = 'info';
+
+                switch (noti.severity) {
+                case 1:
+                    severityType = 'info';
+                    break;
+                case 2:
+                    severityType = 'warning';
+                    break;
+                case 3:
+                    severityType = 'error';
+                    break;
+                default:
+                    severityType = 'info';
+                }
+
                 return (
                 <Link key={noti.id}
                 to={noti.href}
                 >
-               <Card sx={{mb:1}}>
-                    <CardActionArea
-                    >
-                        <CardContent>
-                            <Typography gutterBottom  component="div">
-                               <b>{noti.summary}</b>
-                            </Typography>
-                            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                                {noti.description}
-                            </Typography>
-                        </CardContent>
-                    </CardActionArea>
-               </Card>
+                <Alert severity={severityType}>
+                    <AlertTitle>{noti.summary}</AlertTitle>
+                    {noti.description}
+                </Alert>             
             </Link>
         )})}
+           </Stack>
         </Box>
         </div>
     )
