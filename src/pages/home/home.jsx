@@ -15,6 +15,9 @@ import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import {useAuth} from '../../hooks/authProvider'
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import Fab from '@mui/material/Fab';
+
 
 function Home() {
   const moreRef = useRef(null);
@@ -35,29 +38,40 @@ function Home() {
           <h1>BKeep™</h1>
 
           <div className="user-info">
-          <AccountCircleIcon sx={{marginTop: "5%"}}/>
+          <AccountCircleIcon sx={{marginTop: "2%"}}/>
           <Link to={`/home/profile`}>
               <u style={{color: "black"}}>{decoded.data.username}</u>
             </Link>
-          <Button
-            variant="outlined"
-            size="small"
-            sx={{
-              marginTop: "7%",
-              color: 'black',
-              borderColor: 'black',
-              ml: 1,
-              '&:hover': {
-                backgroundColor: '#444',
-                borderColor: '#f5f5f5',
-              }
-            }}
-            onClick={() => {
-             auth.logout()
-            }}
+
+              <Button
+              variant="outlined"
+              size="small"
+              sx={{
+                  marginTop: "7%",
+                  color: 'black',
+                  borderColor: 'black',
+                  ml: 1,
+
+                  '&:hover': {
+                      backgroundColor: '#444',
+                      borderColor: '#f5f5f5',
+                  }
+              }}
+              onClick={() => {
+                  auth.logout()
+              }}
           >
-            Odjava
+              Odjava
           </Button>
+
+
+          
+          <Link to={`/home/notifications`}>
+          <Fab size="small" sx={{mt:1, ml:1}}>
+            <NotificationsIcon />
+          </Fab>
+          </Link>
+
         </div>
         </div>
 

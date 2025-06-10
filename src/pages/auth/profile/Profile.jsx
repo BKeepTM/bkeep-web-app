@@ -43,7 +43,7 @@ const Profile = () => {
         },
       })
       .then((res) => {
-        const user = res.data[0];
+        const user = res.data;
         setUserData({
           username: user.username,
           email: user.mail,

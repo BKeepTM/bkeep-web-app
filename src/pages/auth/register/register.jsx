@@ -44,6 +44,7 @@ export default function Register() {
           label="Email"
           onChange={(e) => setEmail(e.target.value)}
           value={email}
+          sx={{mb:1}}
         />
 
         <TextField
@@ -51,6 +52,7 @@ export default function Register() {
           label="Ime"
           onChange={(e) => setUsername(e.target.value)}
           value={username}
+          sx={{mb:1}}
         />
 
         <TextField
@@ -59,6 +61,7 @@ export default function Register() {
           onChange={(e) => setPassword(e.target.value)}
           value={password}
           type="password"
+          sx={{mb:1}}
         />
 
         <button type="submit" className="register-button">

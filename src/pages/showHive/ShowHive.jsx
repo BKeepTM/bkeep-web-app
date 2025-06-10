@@ -215,7 +215,7 @@ const handleToggle = async () => {
         }}
       />
 
-      <NotifyAnalize recent={weight[weight.length - 1]} dated={weight[weight.length - 2]}/>
+      <NotifyAnalize/>
 
     </Container>
   );

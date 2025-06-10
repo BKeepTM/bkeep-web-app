@@ -1,50 +1,75 @@
-import { useEffect } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import EmojiNatureIcon from '@mui/icons-material/EmojiNature';
 import ThunderstormIcon from '@mui/icons-material/Thunderstorm';
+import axios from 'axios';
 
-export default function NotifyAnalize({ dated, recent }) {
-    useEffect(() => {
-    if (!recent || !dated) return;
+export default function NotifyAnalize() {
+  const apiUrl = import.meta.env.VITE_API_URL;
+  const [notifications, setNotifications] = useState([]);
+  const shownNotifications = useRef(new Set()); 
+  const hasFetched = useRef(false);
 
-    if (recent.weight > dated.weight) {
-        toast.success(
-        <>
-            <div style={{ marginTop: '8px', fontSize: '16px', lineHeight: '1.6' }}>
-            <b>Teža medu v panju se je povečala za {(recent.weight - dated.weight).toFixed(2)} kg!</b><br />
-            Čebele dobro delajo – verjetno dober donos nektarja <EmojiNatureIcon />
-            </div>
-        </>,
-        {
-            toastId: 'medu-vec',
-            style: {
-            width: '550px',
-            minHeight: '120px',
-            padding: '16px',
-            fontSize: '16px',
-            },
-        }
-        );
-    } else {
-        toast.warning(
-        <>
-            <div style={{ marginTop: '8px', fontSize: '16px', lineHeight: '1.6' }}>
-            <b>Teža se je zmanjšala za {(dated.weight - recent.weight).toFixed(2)} kg!</b><br />
-            Možen razlog: čebele so porabljale zaloge / slab dan za pašo <ThunderstormIcon/>
-            </div>
-        </>,
-        {
-            toastId: 'medu-manj',
-            style: {
-            width: '550px',
-            minHeight: '120px',
-            padding: '16px',
-            fontSize: '16px',
-            },
-        }
-        );
+  useEffect(() => {
+    if (hasFetched.current) return; 
+
+    async function fetchData() {
+      try {
+        const { data } = await axios.get(`${apiUrl}/notification/getByHref`, {
+          params: { href: window.location.href },
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('site')}`,
+          },
+        });
+
+        setNotifications(data);
+
+        data.forEach((noti) => {
+          if (!shownNotifications.current.has(noti.id)) {
+            shownNotifications.current.add(noti.id);
+            showToast(noti);
+          }
+        });
+
+        hasFetched.current = true;
+      } catch (error) {
+        console.error('Napaka pri pridobivanju podatkov z API-ja:', error);
+      }
     }
-    }, [dated, recent]);
+
+    fetchData();
+  }, []);
+
+  const showToast = (noti) => {
+    const options = {
+      autoClose: 6000,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    };
+
+    const content = (
+      <div>
+        <strong>{noti.summary}</strong>
+        <div>{noti.description}</div>
+      </div>
+    );
+
+    switch (noti.severity) {
+      case 1:
+        toast.info(content, options);
+        break;
+      case 2:
+        toast.warn(content, options);
+        break;
+      case 3:
+        toast.error(content, options);
+        break;
+      default:
+        toast.info(content, options);
+    }
+  };
 
   return (
     <div className="grid place-items-center h-dvh bg-zinc-900/15">
@@ -52,8 +77,8 @@ export default function NotifyAnalize({ dated, recent }) {
         position="top-right"
         autoClose={6000}
         hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick={false}
+        newestOnTop={true}
+        closeOnClick
         rtl={false}
         pauseOnFocusLoss
         draggable
