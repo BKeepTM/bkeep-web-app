@@ -4,6 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import EmojiNatureIcon from '@mui/icons-material/EmojiNature';
 import ThunderstormIcon from '@mui/icons-material/Thunderstorm';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 export default function NotifyAnalize() {
   const apiUrl = import.meta.env.VITE_API_URL;
@@ -11,13 +12,16 @@ export default function NotifyAnalize() {
   const shownNotifications = useRef(new Set()); 
   const hasFetched = useRef(false);
 
+
+  const {id} = useParams(); 
+
   useEffect(() => {
     if (hasFetched.current) return; 
 
     async function fetchData() {
       try {
         const { data } = await axios.get(`${apiUrl}/notification/getByHref`, {
-          params: { href: window.location.href },
+          params: { href: `/panj/${id}` },
           headers: {
             Authorization: `Bearer ${localStorage.getItem('site')}`,
           },
