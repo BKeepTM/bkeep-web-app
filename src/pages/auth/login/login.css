@@ -1,0 +1,26 @@
+.login-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding-right: 15rem;
+}
+
+.login-forum{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    padding-left: 15rem;
+    width: 50vw;
+}
+
+
+.login-art{
+    height: 100vh;
+    background: linear-gradient(8deg,rgb(249, 250, 247) , #FFEAA7 ,rgb(107, 108, 110));
+    width: 70vw;
+}
+
+

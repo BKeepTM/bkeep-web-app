@@ -1,0 +1,15 @@
+.location-container {
+  display: flex;
+  flex-direction: column-reverse;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0rem 2rem 2rem 2rem;
+}
+
+.map {
+  flex: 1 1 350px;
+  width: 100%;
+  min-height: 450px;
+  border: 2px solid #ccc;
+  border-radius: 12px;
+}
