@@ -11,8 +11,8 @@ import HivePage from './pages/hivePage/hive';
 import Map from './pages/map/Map';
 import ShowHive from './pages/showHive/ShowHive';
 import Stats from './pages/stats/Stats';
-import Profile from './pages/auth/profile/profile';
-import Notifications from './pages/notification/notifications';
+import Profile from './pages/auth/profile/Profile';
+import Notifications from './pages/notification/Notifications';
 function TransitionRoutes() {
   const location = useLocation();
 
