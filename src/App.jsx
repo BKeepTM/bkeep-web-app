@@ -13,6 +13,8 @@ import ShowHive from './pages/showHive/ShowHive';
 import Stats from './pages/stats/Stats';
 import Profile from './pages/auth/profile/profile';
 import Notifications from './pages/notification/notifications';
+import Analysis from './pages/analysis/analysis';
+
 function TransitionRoutes() {
   const location = useLocation();
 
@@ -25,6 +27,7 @@ function TransitionRoutes() {
           <Route path="/home/hives" element={<PageWrapper><HivePage/></PageWrapper>} />
           <Route path="/home/location" element={<PageWrapper><Map/></PageWrapper>} /> 
           <Route path="/home/stats" element={<PageWrapper><Stats/></PageWrapper>} />
+          <Route path="/home/analysis" element={<PageWrapper><Analysis/></PageWrapper>} />
           <Route path="/home/profile" element={<PageWrapper><Profile/></PageWrapper>} />
           <Route path="/home/notifications" element={<PageWrapper><Notifications/></PageWrapper>} />
           <Route path="/panj/:id" element={<PageWrapper><ShowHive/></PageWrapper>} />

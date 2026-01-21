@@ -3,6 +3,7 @@ import ActionAreaCard from '../../components/ActionAreaCard';
 import cardHive from '../../assets/images/cardHive.jpg';
 import cardGraph from '../../assets/images/cardGraph.jpg';
 import cardMap from '../../assets/images/newCardMap.jpg';
+import cardAnalysis from '../../assets/images/cardAnalysis.jpg';
 import cardNotes from '../../assets/images/cardNotes.jpg';
 import Button from '@mui/material/Button';
 import { useEffect, useRef } from 'react';
@@ -75,7 +76,7 @@ function Home() {
         </div>
         </div>
 
-        <div style={{ width: '100%', maxWidth: '600px', alignSelf: 'center'}}>
+        <div style={{ width: '100%', maxWidth: '45%', alignSelf: 'center'}}>
             <HiveWeightChart/>
         </div>
 
@@ -99,14 +100,15 @@ function Home() {
             })
           }
         >
-          <i>več možnosti</i>
+          več možnosti
         </Button>
       </header>
 
       <main ref={moreRef} className="card-container">
         <ActionAreaCard img={cardHive} title="Panji" description="Upravljaj in spremljaj panje." onClick={()=>navigate("/home/hives")}/>
+          <ActionAreaCard img={cardMap} title="Zemljevid" description="Lokacije panjev in naravnih virov." onClick={()=>navigate("/home/location")} />
+          <ActionAreaCard img={cardAnalysis} title="Analiza" description="Analiza panja z pomočjo računalniškega vida." onClick={()=>navigate("/home/analysis")} />
           <ActionAreaCard img={cardGraph} title="Statistika" description="Statistični podatki glede panjev." onClick={()=>navigate("/home/stats")} />
-        <ActionAreaCard img={cardMap} title="Zemljevid" description="Lokacije panjev in naravnih virov." onClick={()=>navigate("/home/location")} />
       </main>
     </div>
 

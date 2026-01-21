@@ -24,7 +24,7 @@ function HivePage() {
       </Button>
 
       <Typography variant="h4" sx={{ mb: 2 }}>
-        Tvoji panji
+        Tvoji panji🍯
       </Typography>
 
       <Box
