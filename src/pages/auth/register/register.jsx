@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import './Register.css';
+import './register.css';
 import TextField from '@mui/material/TextField';
 
 export default function Register() {
