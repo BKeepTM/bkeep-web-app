@@ -54,7 +54,7 @@ export default function SwitchListSecondary({ hives, setHives }) {
 
   return (
     <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'hsl(0, 0.00%, 19.20%)', alignSelf: 'center' , overflow: 'auto',
-        maxHeight: 300, color: 'white', borderRadius: '5px',scrollbarWidth: 'none'}}>
+        maxHeight: '50%', color: 'white', borderRadius: '5px',scrollbarWidth: 'none'}}>
       {hives.map((hive) => {
         const isChecked = hive.status === 'online';
         const key = `hive-${hive.id}`;

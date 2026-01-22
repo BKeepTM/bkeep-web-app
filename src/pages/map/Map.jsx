@@ -3,7 +3,7 @@ import * as maptilersdk from "@maptiler/sdk";
 import "@maptiler/sdk/dist/maptiler-sdk.css";
 import './map.css';
 import axios from "axios";
-import { Card, CardContent, Typography, Button } from "@mui/material";
+import { Card, CardContent, Typography, Button , Container} from "@mui/material";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useNavigate } from "react-router-dom";
 
@@ -77,7 +77,7 @@ export default function Map() {
 
 
   return (
-    <>
+    <Container maxWidth="lg" sx={{ py: 4 }}>
     <Button
         variant="outlined"
         startIcon={<ArrowBackIcon />}
@@ -131,6 +131,6 @@ export default function Map() {
 
       <div ref={mapContainer} className="map" />
     </div>
-    </>
+    </Container>
   );
 }

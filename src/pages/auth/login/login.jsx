@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import './Login.css';
+import './login.css';
 import TextField from '@mui/material/TextField';
 import { useAuth } from '../../../hooks/authProvider';
 import Alert from '@mui/material/Alert';

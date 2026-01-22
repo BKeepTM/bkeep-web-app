@@ -44,7 +44,7 @@ function Notifications () {
         fetchData();
     }, []);
     return (
-        <div style={{display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', height:'auto',
+        <div style={{display:'flex', flexDirection:'column', height:'100vh',
         background: 'linear-gradient(8deg,rgb(249, 250, 247), #FFEAA7'
         }}>
 

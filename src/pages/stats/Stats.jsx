@@ -51,7 +51,7 @@ function Stats() {
         variant="outlined"
         startIcon={<ArrowBackIcon />}
         onClick={() => navigate('/home')}
-        sx={{ marginBottom: '2rem', color: "black", borderColor: "black" }}
+        sx={{ color: "black", borderColor: "black" }}
       >
         Nazaj domov
       </Button>

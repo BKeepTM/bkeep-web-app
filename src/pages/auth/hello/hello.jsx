@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import './Hello.css';
+import './hello.css';
 import cebelar from '../../../assets/images/cebelar2.png';
 import { linearGradient } from 'framer-motion/client';
 
